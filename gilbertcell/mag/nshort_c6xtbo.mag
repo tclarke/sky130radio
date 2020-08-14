@@ -1,0 +1,31 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1597430702
+<< nmos >>
+rect -15 -42 15 42
+<< ndiff >>
+rect -73 30 -15 42
+rect -73 -30 -61 30
+rect -27 -30 -15 30
+rect -73 -42 -15 -30
+rect 15 30 73 42
+rect 15 -30 27 30
+rect 61 -30 73 30
+rect 15 -42 73 -30
+<< ndiffc >>
+rect -61 -30 -27 30
+rect 27 -30 61 30
+<< poly >>
+rect -15 42 15 68
+rect -15 -68 15 -42
+<< locali >>
+rect -61 30 -27 46
+rect -61 -46 -27 -30
+rect 27 30 61 46
+rect 27 -46 61 -30
+<< properties >>
+string gencell nshort
+string parameters w 0.420 l 0.15 m 1 nf 1 diffcov 100 polycov 100 guard 0 glc 1 grc 1 gtc 1 gbc 1 tbcov 100 rlcov 100 topc 0 botc 0 poverlap 0 doverlap 0 lmin 0.15 wmin 0.42 compatible {nshort nlowvt sonos_e nhv nhvnative} full_metal 0
+string library sky130
+<< end >>

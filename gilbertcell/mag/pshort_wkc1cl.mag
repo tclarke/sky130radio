@@ -1,0 +1,44 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1597433933
+<< nwell >>
+rect -110 -42 110 126
+<< pmos >>
+rect -15 -6 15 78
+<< pdiff >>
+rect -73 66 -15 78
+rect -73 6 -61 66
+rect -27 6 -15 66
+rect -73 -6 -15 6
+rect 15 66 73 78
+rect 15 6 27 66
+rect 61 6 73 66
+rect 15 -6 73 6
+<< pdiffc >>
+rect -61 6 -27 66
+rect 27 6 61 66
+<< poly >>
+rect -15 78 15 104
+rect -15 -37 15 -6
+rect -33 -53 33 -37
+rect -33 -87 -17 -53
+rect 17 -87 33 -53
+rect -33 -103 33 -87
+<< polycont >>
+rect -17 -87 17 -53
+<< locali >>
+rect -61 66 -27 82
+rect -61 -10 -27 6
+rect 27 66 61 82
+rect 27 -10 61 6
+rect -33 -87 -17 -53
+rect 17 -87 33 -53
+<< labels >>
+rlabel polycont -17 -87 17 -53 1 Vbias3
+rlabel pdiffc 27 6 61 66 1 Vdd!
+<< properties >>
+string gencell pshort
+string parameters w 0.42 l 0.15 m 1 nf 1 diffcov 100 polycov 100 guard 0 glc 1 grc 1 gtc 1 gbc 1 tbcov 100 rlcov 100 topc 0 botc 1 poverlap 0 doverlap 1 lmin 0.15 wmin 0.42 compatible {pshort plowvt phighvt phv} full_metal 1
+string library sky130
+<< end >>

@@ -1,0 +1,50 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1597433511
+<< nmos >>
+rect -63 -42 -33 42
+rect 33 -42 63 42
+<< ndiff >>
+rect -143 30 -63 42
+rect -143 -30 -131 30
+rect -97 -30 -63 30
+rect -143 -42 -63 -30
+rect -33 30 33 42
+rect -33 -30 -17 30
+rect 17 -30 33 30
+rect -33 -42 33 -30
+rect 63 30 125 42
+rect 63 -30 79 30
+rect 113 -30 125 30
+rect 63 -42 125 -30
+<< ndiffc >>
+rect -131 -30 -97 30
+rect -17 -30 17 30
+rect 79 -30 113 30
+<< poly >>
+rect -63 42 -33 68
+rect 15 64 81 130
+rect 33 42 63 64
+rect -63 -64 -33 -42
+rect -81 -130 -15 -64
+rect 33 -68 63 -42
+<< locali >>
+rect -131 30 -97 46
+rect -131 -46 -97 -30
+rect -17 30 17 46
+rect -17 -46 17 -30
+rect 79 30 113 46
+rect 79 -46 113 -30
+<< labels >>
+rlabel ndiffc 79 -30 113 30 1 Vout_neg
+rlabel ndiffc -17 -30 17 30 1 Irf
+rlabel ndiffc -131 -30 -97 30 1 Vout_pos
+rlabel poly -65 -114 -31 -80 1 Vlo_neg
+rlabel poly 31 80 65 114 1 Vlo_pos
+<< properties >>
+string gencell nshort
+string FIXED_BBOX -210 -199 210 199
+string parameters w 0.420 l 0.150 m 1 nf 2 diffcov 100 polycov 100 guard 0 glc 1 grc 1 gtc 1 gbc 1 tbcov 100 rlcov 100 topc 1 botc 1 poverlap 0 doverlap 1 lmin 0.15 wmin 0.42 compatible {nshort nlowvt sonos_e nhv nhvnative} full_metal 1
+string library sky130
+<< end >>

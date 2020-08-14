@@ -1,0 +1,75 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1597434324
+<< locali >>
+rect -498 476 -74 514
+rect -498 186 -439 476
+rect -108 438 -74 476
+rect -108 424 -75 438
+rect -88 381 -74 389
+rect -300 349 -284 363
+rect -274 349 -266 362
+rect -88 355 92 381
+rect -300 313 -266 349
+rect -74 347 92 355
+rect -300 279 -192 313
+rect -226 192 -192 279
+rect 58 240 92 347
+rect 58 224 74 240
+rect -498 176 -473 186
+rect -498 101 -474 176
+rect -261 175 -152 192
+rect -230 148 -152 175
+rect -56 133 24 200
+rect -498 -81 -464 101
+rect -498 -158 -418 -81
+rect -204 -157 -70 -139
+rect -220 -173 -70 -157
+rect -10 -158 24 133
+rect -398 -311 -332 -225
+rect -104 -275 -70 -173
+<< viali >>
+rect -286 -32 -252 2
+rect 151 -32 211 2
+<< metal1 >>
+rect -303 2 -246 9
+rect 145 2 217 10
+rect -303 -32 -286 2
+rect -252 -32 151 2
+rect 211 -32 228 2
+rect -303 -33 228 -32
+rect -303 -38 -246 -33
+rect 145 -41 217 -33
+use pshort_wkc1cl  pshort_wkc1cl_1
+timestamp 1597433933
+transform 0 1 145 -1 0 -59
+box -110 -103 110 126
+use pshort_wkc1cl  pshort_wkc1cl_0
+timestamp 1597433933
+transform 0 -1 -316 -1 0 -338
+box -110 -103 110 126
+use scp  scp_1
+timestamp 1597433511
+transform -1 0 -39 0 -1 194
+box -143 -130 125 130
+use scp  scp_0
+timestamp 1597433511
+transform 1 0 -343 0 1 146
+box -143 -130 125 130
+use scp_cascode  scp_cascode_0
+timestamp 1597433202
+transform 1 0 -221 0 1 -112
+box -221 -145 231 130
+use pshort_ncz0x8  pshort_ncz0x8_0
+timestamp 1597433202
+transform -1 0 -187 0 -1 393
+box -163 -139 164 89
+use nshort_c6xtbo  nshort_c6xtbo_0
+timestamp 1597430702
+transform -1 0 -43 0 -1 -290
+box -73 -68 73 68
+<< labels >>
+rlabel space -16 -320 18 -260 1 Gnd!
+rlabel space -44 -278 -44 -278 1 Mtail
+<< end >>

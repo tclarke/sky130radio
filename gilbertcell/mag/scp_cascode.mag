@@ -1,0 +1,94 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1597433202
+<< error_p >>
+rect -32 -46 -17 -12
+rect 2 -61 17 -46
+<< nmos >>
+rect -159 -42 -129 42
+rect -63 -42 -33 42
+rect 33 -42 63 42
+rect 129 -42 159 42
+<< ndiff >>
+rect -221 30 -159 42
+rect -221 -30 -209 30
+rect -175 -30 -159 30
+rect -221 -42 -159 -30
+rect -129 -42 -63 42
+rect -33 30 33 42
+rect -33 -30 -17 30
+rect 17 -30 33 30
+rect -33 -42 33 -30
+rect 63 -42 129 42
+rect 159 30 231 42
+rect 159 -30 185 30
+rect 219 -30 231 30
+rect 159 -42 231 -30
+<< ndiffc >>
+rect -209 -30 -175 30
+rect -17 -30 17 30
+rect 185 -30 219 30
+<< poly >>
+rect -81 114 -15 130
+rect -81 80 -65 114
+rect -31 80 -15 114
+rect -159 42 -129 68
+rect -81 64 -15 80
+rect 111 114 177 130
+rect 111 80 127 114
+rect 161 80 177 114
+rect -63 42 -33 64
+rect 33 42 63 68
+rect 111 64 177 80
+rect 129 42 159 64
+rect -159 -64 -129 -42
+rect -177 -80 -111 -64
+rect -63 -68 -33 -42
+rect 33 -64 63 -42
+rect -177 -114 -161 -80
+rect -127 -114 -111 -80
+rect -177 -130 -111 -114
+rect 15 -95 81 -64
+rect 129 -68 159 -42
+rect 15 -129 31 -95
+rect 65 -129 81 -95
+rect 15 -145 81 -129
+<< polycont >>
+rect -65 80 -31 114
+rect 127 80 161 114
+rect -161 -114 -127 -80
+rect 31 -129 65 -95
+<< locali >>
+rect -81 80 -65 114
+rect -31 80 -15 114
+rect 111 80 127 114
+rect 161 80 177 114
+rect -209 30 -175 46
+rect -209 -46 -175 -30
+rect -17 30 17 46
+rect -17 -46 17 -30
+rect 185 30 219 46
+rect 185 -46 219 -30
+rect -17 -61 2 -46
+rect -177 -114 -161 -80
+rect -127 -114 -111 -80
+rect 15 -129 31 -95
+rect 65 -129 81 -95
+<< labels >>
+rlabel poly -48 68 -48 68 1 M1
+rlabel poly 144 68 144 68 1 M8
+rlabel poly 48 -60 48 -60 1 M2
+rlabel poly -144 -58 -144 -58 1 M7
+rlabel polycont -65 80 -31 114 1 Vrf_pos
+rlabel polycont -161 -114 -127 -80 1 Vbias1
+rlabel polycont 127 80 161 114 1 Vbias1
+rlabel ndiffc -17 -30 17 30 1 Mtail
+rlabel ndiffc -209 -30 -175 30 1 Irf_pos
+rlabel ndiffc 185 -30 219 30 1 Irf_neg
+rlabel polycont 31 -129 65 -95 1 Vrf_neg
+<< properties >>
+string gencell nshort
+string parameters w 0.420 l 0.15 m 1 nf 4 diffcov 100 polycov 100 guard 0 glc 1 grc 1 gtc 1 gbc 1 tbcov 100 rlcov 100 topc 1 botc 1 poverlap 0 doverlap 1 lmin 0.15 wmin 0.42 compatible {nshort nlowvt sonos_e nhv nhvnative} full_metal 1
+string library sky130
+<< end >>

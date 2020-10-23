@@ -1,0 +1,41 @@
+v {xschem version=2.9.8 file_version=1.2}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=x1"
+}
+V {}
+S {}
+E {}
+L 4 0 -70 0 -50 {}
+L 4 20 -70 20 -50 {}
+L 4 -10 50 -10 70 {}
+L 4 10 50 10 70 {}
+L 4 -20 -70 -20 -50 {}
+L 4 50 0 70 0 {}
+L 4 50 10 70 10 {}
+L 4 -70 0 -50 0 {}
+L 4 -70 10 -50 10 {}
+L 4 -37.5 40 37.5 -40 {}
+L 4 -37.5 -40 37.5 40 {}
+B 5 -2.5 -72.5 2.5 -67.5 {name=Vbias2 dir=in name=p6 }
+B 5 17.5 -72.5 22.5 -67.5 {name=Vbias3 dir=in name=p7 }
+B 5 -12.5 67.5 -7.5 72.5 {name=Vlo+ dir=in name=p1 }
+B 5 7.5 67.5 12.5 72.5 {name=Vlo- dir=in name=p2 }
+B 5 -22.5 -72.5 -17.5 -67.5 {name=Vbias1 dir=in name=p5 }
+B 5 67.5 -2.5 72.5 2.5 {name=Out+ dir=in name=p8}
+B 5 67.5 7.5 72.5 12.5 {name=Out- dir=in name=p9}
+B 5 -72.5 -2.5 -67.5 2.5 {name=Vrf+ dir=in name=p3 }
+B 5 -72.5 7.5 -67.5 12.5 {name=Vrf- dir=in name=p4 }
+A 4 0 0 55.22680508593631 354.8055710922652 360 {}
+T {@symname} 62.5 -36 0 0 0.3 0.3 {}
+T {@name} 65 -52 0 0 0.2 0.2 {}
+T {Vbias2} 5 -50 1 0 0.2 0.2 {}
+T {Vbias3} 25 -50 1 0 0.2 0.2 {}
+T {Vlo+} -16.5 50 3 0 0.2 0.2 {}
+T {Vlo-} 3.5 50 3 0 0.2 0.2 {}
+T {Out+} 47.5 -7.5 0 1 0.2 0.2 {}
+T {Out-} 47.5 2.5 0 1 0.2 0.2 {}
+T {Vrf+} -50 -7.5 0 0 0.2 0.2 {}
+T {Vrf-} -50 5 0 0 0.2 0.2 {}
+T {Vbias1} -15 -50 1 0 0.2 0.2 {}

@@ -23,8 +23,8 @@ B 5 17.5 -72.5 22.5 -67.5 {name=Vbias3 dir=in name=p7 }
 B 5 -12.5 67.5 -7.5 72.5 {name=Vlo+ dir=in name=p1 }
 B 5 7.5 67.5 12.5 72.5 {name=Vlo- dir=in name=p2 }
 B 5 -22.5 -72.5 -17.5 -67.5 {name=Vbias1 dir=in name=p5 }
-B 5 67.5 -2.5 72.5 2.5 {name=Out+ dir=in name=p8}
-B 5 67.5 7.5 72.5 12.5 {name=Out- dir=in name=p9}
+B 5 67.5 -2.5 72.5 2.5 {name=Out+ dir=out name=p8}
+B 5 67.5 7.5 72.5 12.5 {name=Out- dir=out name=p9}
 B 5 -72.5 -2.5 -67.5 2.5 {name=Vrf+ dir=in name=p3 }
 B 5 -72.5 7.5 -67.5 12.5 {name=Vrf- dir=in name=p4 }
 A 4 0 0 55.22680508593631 354.8055710922652 360 {}

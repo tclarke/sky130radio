@@ -68,6 +68,7 @@ if __name__ == '__main__':
     import sys
     if len(sys.argv) < 4:
         print(f'{sys.argv[0]} <fet_type> <bins_csv> <out file>')
+        print('<out file> is a template with 1 \%s which will contain the plot name. 4 are generated per LxW combo.')
         sys.exit(0)
     fet_type = sys.argv[1]
     bins_fname = sys.argv[2]

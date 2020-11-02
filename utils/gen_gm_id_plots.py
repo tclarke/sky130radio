@@ -9,8 +9,6 @@ import matplotlib.pyplot as plt
 def create_test_circuit(fet_type, iparam, fet_L, fet_W, coner_path):
     c=Circuit('gm_id')
     c.include('/home/tclarke/skywater-pdk/libraries/sky130_fd_pr/latest/models/corners/tt.spice')
-    fet_type = 'sky130_fd_pr__nfet_01v8'
-    iparam = f'@m.xm1.m{fet_type}[%s]'
     fet_L = 0.15
     fet_W = 1
 
@@ -41,13 +39,13 @@ def init_plots():
     figs[0].suptitle('Id/W vs gm/Id')
     plts[0].set_xlabel("gm/Id")
     plts[0].set_ylabel("Id/W")
-    figs[0].suptitle('fT vs gm/Id')
+    figs[1].suptitle('fT vs gm/Id')
     plts[1].set_xlabel("gm/Id")
     plts[1].set_ylabel("f_T")
-    figs[0].suptitle('gm/gds vs gm/Id')
+    figs[2].suptitle('gm/gds vs gm/Id')
     plts[2].set_xlabel("gm/Id")
     plts[2].set_ylabel("gm/gds")
-    figs[0].suptitle('gm/Id vs Vgg')
+    figs[3].suptitle('gm/Id vs Vgg')
     plts[3].set_xlabel("Vgg")
     plts[3].set_ylabel("gm/Id")
     return figs, plts
@@ -67,12 +65,16 @@ def read_bins(fname):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) < 4:
-        print(f'{sys.argv[0]} <fet_type> <bins_csv> <out file>')
+        print(f'{sys.argv[0]} <fet_type> <bins_csv> <out file> [width]')
         print('<out file> is a template with 1 \%s which will contain the plot name. 4 are generated per LxW combo.')
+        print('If [width] is specified, only W/L pairs for that width are processed.')
         sys.exit(0)
     fet_type = sys.argv[1]
     bins_fname = sys.argv[2]
     figname = sys.argv[3]
+    only_W = None
+    if len(sys.argv) > 4:
+        only_W = float(sys.argv[4])
     print(f'Simulating {fet_type} with bins {bins_fname}')
 
     iparam = f'@m.xm1.m{fet_type}[%s]'
@@ -84,6 +86,8 @@ if __name__ == '__main__':
     figs, plts = init_plots()
     for dev, bin, fet_W, fet_L in bins:
         fet_W, fet_L = float(fet_W), float(fet_L)
+        if only_W is not None and fet_W != only_W:
+            continue
         print(f'{bin}: {dev}  W {fet_W} x L {fet_L}')
         c.element('XM1').parameters['W'] = fet_W
         c.element('XM1').parameters['L'] = fet_L

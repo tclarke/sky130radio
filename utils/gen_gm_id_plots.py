@@ -5,6 +5,8 @@ logger = Logging.setup_logging()
 from PySpice.Spice.Netlist import Circuit
 from PySpice.Unit import *
 import matplotlib.pyplot as plt
+import numpy as np
+import os.path
 
 def create_test_circuit(fet_type, iparam, fet_L, fet_W, coner_path):
     c=Circuit('gm_id')
@@ -26,12 +28,16 @@ def run_sim(c, iparam, fet_W):
     an = sim.dc(Vgg=slice(0, 1.8, 0.01))
 
     # calculate needed values..need as_ndarray() since most of these have None as the unit and that causes an error
-    gm_id = an.internal_parameters[iparam%'gm'].as_ndarray() / an.internal_parameters[iparam%'id'].as_ndarray()
-    ft = an.internal_parameters[iparam%'gm'].as_ndarray() / an.internal_parameters[iparam%'cgg'].as_ndarray()
-    id_W = an.internal_parameters[iparam%'id'].as_ndarray() / fet_W
-    gm_gds = an.internal_parameters[iparam%'gm'].as_ndarray() / an.internal_parameters[iparam%'gds'].as_ndarray()
+    gm = an.internal_parameters[iparam%'gm'].as_ndarray()
+    id = an.internal_parameters[iparam%'id'].as_ndarray()
+    gm_id = gm / id
+    cgg = an.internal_parameters[iparam%'cgg'].as_ndarray()
+    ft = gm / cgg
+    id_W = id / fet_W
+    gds = an.internal_parameters[iparam%'gds'].as_ndarray()
+    gm_gds = gm / gds
 
-    return gm_id, ft, id_W, gm_gds, an.nodes['v-sweep']
+    return gm_id, ft, id_W, gm_gds, an.nodes['v-sweep'], gm, id, cgg, gds
 
 def init_plots():
     figs = [plt.figure(), plt.figure(), plt.figure(), plt.figure()]
@@ -84,6 +90,16 @@ if __name__ == '__main__':
 
     figtitles = ['Id_w', 'fT', 'gm_gds', 'gm_id']
     figs, plts = init_plots()
+    import h5py
+    h5name = os.path.splitext(figname % 'data')[0] + '.h5'
+    out = h5py.File(h5name, "w")
+    bins_d = out.create_dataset('bins', (0, 2), maxshape=(None,2))
+    gm_d = out.create_dataset('gm', (0, 0), maxshape=(None,None))
+    id_d = out.create_dataset('id', (0, 0), maxshape=(None,None))
+    cgg_d = out.create_dataset('cgg', (0, 0), maxshape=(None,None))
+    gds_d = out.create_dataset('gds', (0, 0), maxshape=(None,None))
+    vsweep_d = out.create_dataset('vsweep', (0,0), maxshape=(None,None))
+    idx = 0
     for dev, bin, fet_W, fet_L in bins:
         fet_W, fet_L = float(fet_W), float(fet_L)
         if only_W is not None and fet_W != only_W:
@@ -91,7 +107,26 @@ if __name__ == '__main__':
         print(f'{bin}: {dev}  W {fet_W} x L {fet_L}')
         c.element('XM1').parameters['W'] = fet_W
         c.element('XM1').parameters['L'] = fet_L
-        gm_id, ft, id_W, gm_gds, vsweep = run_sim(c, iparam, fet_W)
+        gm_id, ft, id_W, gm_gds, vsweep, gm, id, cgg, gds = run_sim(c, iparam, fet_W)
+        if idx == 0:
+            gm_d.resize(len(gm_id), 1)
+            id_d.resize(len(id_W), 1)
+            cgg_d.resize(len(ft), 1)
+            gds_d.resize(len(gm_gds), 1)
+            vsweep_d.resize(len(vsweep), 1)
+        bins_d.resize(idx+1, 0)
+        gm_d.resize(idx+1, 0)
+        id_d.resize(idx+1, 0)
+        cgg_d.resize(idx+1, 0)
+        gds_d.resize(idx+1, 0)
+        vsweep_d.resize(idx+1, 0)
+        bins_d[idx,:] = [fet_W, fet_L]
+        gm_d[idx, :] = gm
+        id_d[idx, :] = id
+        cgg_d[idx, :] = cgg
+        gds_d[idx, :] = gds
+        vsweep_d[idx, :] = vsweep  # should be the same for every row
+        idx += 1
         gen_plots(gm_id, id_W, ft, gm_gds, vsweep, fet_W, fet_L, plts)
     for f,nm in zip(figs, figtitles):
         f.legend()
